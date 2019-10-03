@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1570057271 source:d:\usuario\desktop\estudio\abm_generico\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Pantalla.h"
+
+1569889890 d:\usuario\desktop\estudio\abm_generico\utn.h
+
+1569889890 d:\usuario\desktop\estudio\abm_generico\pantalla.h
+
+1570057275 source:d:\usuario\desktop\estudio\abm_generico\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
