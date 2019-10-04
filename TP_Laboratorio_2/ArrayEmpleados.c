@@ -62,6 +62,24 @@ int altaEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmpleados i
 	return retorno;
 }
 
+int buscarEmpleadosID(struct eEmpleados *aArray, int cantidad, int id)
+{
+    int i;
+    int retorno = -1;
+    if(aArray != NULL && cantidad > 0)
+    {
+        for(i = 0; i < cantidad; i++)
+        {
+            if(aArray[i].id == id && aArray[i].status == STATUS_NOT_EMPTY)
+            {
+                retorno = i;
+                break;
+            }
+        }
+        return retorno;
+    }
+}
+
 int altaEmpleados(struct eEmpleados *aArrays, int len)
 {
 	struct eEmpleados bEmpleados;
@@ -94,3 +112,22 @@ int altaEmpleados(struct eEmpleados *aArrays, int len)
 	return retorno;
 }
 
+int modificarEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmpleados item)
+{
+    int index;
+    int retorno = -1;
+    if(aArray != NULL && cantidad > 0)
+    {
+        index = buscarEmpleadosID(aArray ,cantidad, item.id);
+        if(index != -1)
+        {
+            aArray[index] = item;
+            aArray[index].status = STATUS_NOT_EMPTY;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int modificarEmpleados(struct eEmpleados *aArray, int cantidad)
+{}
