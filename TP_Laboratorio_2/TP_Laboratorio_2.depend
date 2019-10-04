@@ -31,16 +31,16 @@
 
 1570054031 d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\utn.h
 
-1570147278 source:d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\main.c
+1570197509 source:d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"ArrayEmpleados.h"
 	"utn.h"
 
-1570148040 d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\arrayempleados.h
+1570197265 d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\arrayempleados.h
 
-1570154382 source:d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\arrayempleados.c
+1570197511 source:d:\usuario\desktop\estudio\github\abm_completo\tp_laboratorio_2\arrayempleados.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

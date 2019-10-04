@@ -129,5 +129,51 @@ int modificarEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmplea
     return retorno;
 }
 
-int modificarEmpleados(struct eEmpleados *aArray, int cantidad)
-{}
+int modificarEmpleados(struct eEmpleados *aArray, int cantidad,int ID)
+{
+    int retorno = -1;
+    struct eEmpleados bEmpleados;
+    int opcion;
+    if (buscarEmpleadosID(aArray, CANT_EMPLEADOS,ID) == -1)
+    {
+        printf("Error el id no existe\n");
+    }
+    printf("¿Que desea modificar de este empleado?\n"
+            "1.Nombre\n"
+            "2.Apellido\n"
+            "3.Sueldo\n"
+            "4.Sector\n"
+            "0.No deseo modificar nada\n");
+    getInt(&opcion,"Ingrese una opcion: ","Error, esa no es una opcion!!",0,5,2);
+    bEmpleados.id = ID;
+    switch(opcion)
+    {
+        case 1:
+            getString(bEmpleados.nombre,"Ingrese el nuevo nombre: \n","Error\n",1,51,2);
+            break;
+        case 2:
+            getString(bEmpleados.apellido,"Ingrese el nuevo apellido: \n","Error\n",1,51,2);
+            break;
+        case 3:
+            getFloat(&bEmpleados.sueldo,"Ingrese el nuevo sueldo: \n","Error, no es un sueldo valido\n",0,100000,2);
+            printf("Cambio de sueldo exitoso!\n");
+            break;
+        case 4:
+            getInt(&bEmpleados.sector,"Ingrese el nuevo sector\n1.Gerencia\n2.Empleado\n","Error, sector inexistente\n",1,2,2);
+            printf("Cambio de sector exitoso!\n");
+            break;
+        default:
+            printf("Precione cualquier tecla para salir \n");
+            break;
+    }
+    if (modificarEmpleadosID(aArray, CANT_EMPLEADOS, bEmpleados) == 0)
+    {
+        printf("Modificacion exitosa\n");
+        retorno = 0;
+    }
+    else
+    {
+        printf("Error al hacer la modificacion\n");
+    }
+    return retorno;
+}

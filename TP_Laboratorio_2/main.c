@@ -31,35 +31,10 @@ int main()
             break;
         case 2:
             getInt(&ID,"Ingrese el id para modificar\n","Error\n",0,100000,2);
-			if (buscarEmpleadosID(aEmpleados, CANT_EMPLEADOS,ID) == -1)
-            {
-				printf("Error el id no existe\n");
-				break;
-			}
-			bEmpleados.id = ID;
-			if (getString(bEmpleados.nombre, "Ingrese el nuevo nombre\n", "Error\n", 1, 49, 2) == -1) {
-				printf("Error en el nombre\n");
-				break;
-			}
-			if (getString(bEmpleados.apellido, "Ingrese el nuevo apellido\n", "Error", 1, 49, 2) == -1) {
-				printf("Error en la direccion\n");
-				break;
-			}
-			if (getFloat(&bEmpleados.sueldo, "Ingrese el nuevo sueldo\n", "Error\n", 0, 1000000, 2) == -1) {
-				printf("Error en el precio\n");
-				break;
-			}
-			if (getInt(&bEmpleados.sector, "Ingrese el nuevo sector\n1.Gerencia\n2.Empleado\n", "Error\n", 1, 2, 2) == -1) {
-				printf("Error en el tipo\n");
-				break;
-			}
-			if (modificarEmpleadosID(aEmpleados, CANT_EMPLEADOS, bEmpleados) == 0) {
-				printf("Modificacion exitosa\n");
-			} else {
-				printf("Error al hacer la modificacion\n");
-			}
-			break;
+            modificarEmpleados(aEmpleados,CANT_EMPLEADOS,ID);
+            break;
         case 3:
+
 
         }
 
