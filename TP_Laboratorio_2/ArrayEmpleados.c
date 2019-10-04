@@ -10,7 +10,6 @@ static int crearID(void)
     ID++;
     return ID;
 }
-
 int initEmpleados(struct eEmpleados* aArray,int cantidad)
 {
     int i;
@@ -25,7 +24,6 @@ int initEmpleados(struct eEmpleados* aArray,int cantidad)
     }
     return retorno;
 }
-
 int buscarLugarLibreEmpleados(struct eEmpleados *aArray, int cantidad)
 {
 	int retorno = -1;
@@ -43,7 +41,6 @@ int buscarLugarLibreEmpleados(struct eEmpleados *aArray, int cantidad)
 	}
 	return retorno;
 }
-
 int altaEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmpleados item)
 {
     int retorno = -1;
@@ -61,7 +58,6 @@ int altaEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmpleados i
 	}
 	return retorno;
 }
-
 int buscarEmpleadosID(struct eEmpleados *aArray, int cantidad, int id)
 {
     int i;
@@ -76,10 +72,9 @@ int buscarEmpleadosID(struct eEmpleados *aArray, int cantidad, int id)
                 break;
             }
         }
-        return retorno;
     }
+    return retorno;
 }
-
 int altaEmpleados(struct eEmpleados *aArrays, int len)
 {
 	struct eEmpleados bEmpleados;
@@ -96,7 +91,7 @@ int altaEmpleados(struct eEmpleados *aArrays, int len)
 						{
 							if (altaEmpleadosID(aArrays, len, bEmpleados) == 0)
 							{
-								printf("Alta exitosa\n");
+								printf("ALTA EXITOSA!\n");
 								retorno = 0; // OK
 							}
 						}
@@ -111,7 +106,6 @@ int altaEmpleados(struct eEmpleados *aArrays, int len)
 	}
 	return retorno;
 }
-
 int modificarEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmpleados item)
 {
     int index;
@@ -128,76 +122,60 @@ int modificarEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmplea
     }
     return retorno;
 }
-
 int modificarEmpleados(struct eEmpleados *aArray, int cantidad,int ID)
 {
-    int retorno = -1;
     struct eEmpleados bEmpleados;
-    int opcion;
+    int retorno = -1;
     if (buscarEmpleadosID(aArray, CANT_EMPLEADOS,ID) == -1)
     {
         printf("Error el id no existe\n");
+        return retorno;
     }
-    printf("¿Que desea modificar de este empleado?\n"
-            "1.Nombre\n"
-            "2.Apellido\n"
-            "3.Sueldo\n"
-            "4.Sector\n"
-            "0.No deseo modificar nada\n");
-    getInt(&opcion,"Ingrese una opcion: ","Error, esa no es una opcion!!",0,5,2);
     bEmpleados.id = ID;
-    switch(opcion)
+    if (getString(bEmpleados.nombre, "Ingrese el nuevo nombre: \n", "Error\n", 1, 51, 2) == -1)
     {
-        case 1:
-            getString(bEmpleados.nombre,"Ingrese el nuevo nombre: \n","Error\n",1,51,2);
-            break;
-        case 2:
-            getString(bEmpleados.apellido,"Ingrese el nuevo apellido: \n","Error\n",1,51,2);
-            break;
-        case 3:
-            getFloat(&bEmpleados.sueldo,"Ingrese el nuevo sueldo: \n","Error, no es un sueldo valido\n",0,100000,2);
-            printf("Cambio de sueldo exitoso!\n");
-            break;
-        case 4:
-            getInt(&bEmpleados.sector,"Ingrese el nuevo sector\n1.Gerencia\n2.Empleado\n","Error, sector inexistente\n",1,2,2);
-            printf("Cambio de sector exitoso!\n");
-            break;
-        default:
-            printf("Precione cualquier tecla para salir \n");
-            break;
-    }
-    if (modificarEmpleadosID(aArray, CANT_EMPLEADOS, bEmpleados) == 0)
-    {
-        printf("Modificacion exitosa\n");
+        printf("Error en el nombre\n");
         retorno = 0;
     }
-    else
+    if (getString(bEmpleados.apellido, "Ingrese el nuevo apellido: \n", "Error\n", 1, 51, 2) == -1)
     {
-        printf("Error al hacer la modificacion\n");
+        printf("Error en la direccion\n");
+    }
+    if (getFloat(&bEmpleados.sueldo, "Ingrese el nuevo sueldo: \n", "Error\n", 0, 1000000, 2) == -1)
+    {
+        printf("Error en el precio\n");
+    }
+    if (getInt(&bEmpleados.sector, "Ingrese el nuevo sector: \n Recuerde-\n1.Gerencia-----2.Empleado\n", "Error\n", 1, 2, 2) == -1)
+    {
+        printf("Error en el tipo\n");
+    }
+    if(modificarEmpleadosID(aArray,CANT_EMPLEADOS,bEmpleados) == -1)
+    {
+        printf("MODIFICACION EXITOSA!\n");
     }
     return retorno;
 }
-
-int imprimirEmpleados(struct eEmpleados *aArray, int cantidad){
+int imprimirEmpleados(struct eEmpleados *aArray, int cantidad)
+{
 	int i;
 	int retorno = -1;
-	if(aArray != NULL && cantidad>0)
+	if(aArray != NULL && cantidad > 0 )
 	{
 		retorno = 0;
-		printf("Recuerde los sectores son:\n1.Gerencia -- 2.Empleado\n\n"
+		printf("Recuerde los sectores son:\n\n1.Gerencia -- 2.Empleado\n\n"
                 "id     Nombre    Apellido    Sueldo     Tipo\n");
-		for(i=0;i<cantidad;i++)
+		for(i = 0; i < cantidad; i++)
 		{
 			if(aArray[i].status == STATUS_NOT_EMPTY){
-				printf("%d -- %s -- %s -- %2.f -- %d \n",aArray[i].id,aArray[i].nombre,aArray[i].apellido,aArray[i].sueldo,aArray[i].sector);
+				printf("%d ---- %s ---- %s ---- %2.f ---- %d \n",aArray[i].id,aArray[i].nombre,aArray[i].apellido,aArray[i].sueldo,aArray[i].sector);
 			}
 
 		}
 	}
 	return retorno;
 }
-
-int bajaEmpleadoID(struct eEmpleados *aArray, int cantidad,int id){
+int bajaEmpleadoID(struct eEmpleados *aArray, int cantidad,int id)
+{
 	int retorno = -1;
 	int index;
 	if(aArray!=NULL && cantidad > 0)
@@ -211,20 +189,63 @@ int bajaEmpleadoID(struct eEmpleados *aArray, int cantidad,int id){
 	}
 	return retorno;
 }
-
 int bajaEmpleado(struct eEmpleados *aArray, int cantidad, int ID)
 {
+    int retorno = -1;
     char conf;
+    if(bajaEmpleado(aArray,CANT_EMPLEADOS, ID) == -1)
+    {
+        printf("No existe el id\n");
+        return retorno;
+    }
     getChar(&conf,"¿Esta seguro que desea realizar esta baja?(s/n)\n","No es una respuesta valida(s/n)\n",'a','z',2);
     if(conf == 's')
     {
         if(bajaEmpleadoID(aArray,CANT_EMPLEADOS,ID) == 0)
         {
-            printf("Baja Exitosa\n");
+            printf("BAJA EXITOSA!\n");
+            retorno = 0;
         }
         else
         {
-            printf("Error al dar la baja, verifique si el ID existe");
+            printf("Error al dar la baja, verifique si el ID existe\n");
         }
     }
+    return retorno;
+}
+
+int ordenarEmpleados(struct eEmpleados *aArray, int cantidad){
+	int i;
+	int retorno = -1;
+	struct eEmpleados bEmpleados;
+	int swap;
+	if(aArray != NULL && cantidad > 0)
+	{
+		retorno = 0;
+		do
+		{
+			swap = 0;
+			for(i = 0; i < cantidad - 1; i++)
+			{
+				if(strncmp(aArray[i].apellido,aArray[i+1].apellido,CANT_CARAC)>0)
+				{
+					swap = 1;
+					bEmpleados = aArray[i];
+					aArray[i] = aArray[i+1];
+					aArray[i+1] = bEmpleados;
+				}
+				else if(strncmp(aArray[i].apellido,aArray[i+1].apellido,CANT_CARAC) == 0)
+				{
+					if(strncmp(aArray[i].sector,aArray[i+1].sector,CANT_CARAC) > 0)
+					{
+						swap = 1;
+						bEmpleados = aArray[i];
+						aArray[i] = aArray[i+1];
+						aArray[i+1] = bEmpleados;
+					}
+				}
+			}
+		}while(swap);
+	}
+	return retorno;
 }

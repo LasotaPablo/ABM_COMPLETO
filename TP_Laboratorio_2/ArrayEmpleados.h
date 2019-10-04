@@ -1,4 +1,5 @@
 #define CANT_EMPLEADOS 1000
+#define CANT_CARAC 50
 #define STATUS_EMPTY 0
 #define STATUS_NOT_EMPTY 1
 
@@ -20,3 +21,5 @@ int modificarEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmplea
 int buscarEmpleadosID(struct eEmpleados *aArray, int cantidad, int id);
 int modificarEmpleados(struct eEmpleados *aArray, int cantidad,int ID);
 int imprimirEmpleados(struct eEmpleados *aArray, int cantidad);
+int bajaEmpleadoID(struct eEmpleados *aArray, int cantidad,int id);
+int bajaEmpleado(struct eEmpleados *aArray, int cantidad, int ID);

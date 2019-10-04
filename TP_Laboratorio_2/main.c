@@ -9,8 +9,6 @@ int main()
     struct eEmpleados aEmpleados[CANT_EMPLEADOS];
     int opcion;
     int ID;
-    char again;
-
     initEmpleados(aEmpleados,CANT_EMPLEADOS);
     do
     {
@@ -30,12 +28,8 @@ int main()
             altaEmpleados(aEmpleados,CANT_EMPLEADOS);
             break;
         case 2:
-            do
-            {
-                getInt(&ID,"Ingrese el id para modificar\n","Error\n",0,100000,2);
-                modificarEmpleados(aEmpleados,CANT_EMPLEADOS,ID);
-                getChar(&again,"¿Desea realizar otra modificacion?(s/n)\n","Error, eso es un numero(s/n)",'a','n',2);
-            }while(again == 's');
+            getInt(&ID,"Ingrese el id para modificar\n","Error\n",0,100000,2);
+            modificarEmpleados(aEmpleados,CANT_EMPLEADOS,ID);
             break;
         case 3:
    			getInt(&ID,"Ingrese el id para dar de baja\n","Error\n",0,100000,2);
@@ -45,7 +39,7 @@ int main()
             imprimirEmpleados(aEmpleados,CANT_EMPLEADOS);
             break;
         default:
-            printf("Precione cualquier tecla para salir del programa\n");
+            printf("Precione enter para salir del programa\n");
             break;
         }
 
