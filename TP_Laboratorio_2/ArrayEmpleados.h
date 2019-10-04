@@ -19,3 +19,4 @@ int altaEmpleados(struct eEmpleados *aArray,int len);
 int modificarEmpleadosID(struct eEmpleados *aArray, int cantidad, struct eEmpleados item);
 int buscarEmpleadosID(struct eEmpleados *aArray, int cantidad, int id);
 int modificarEmpleados(struct eEmpleados *aArray, int cantidad,int ID);
+int imprimirEmpleados(struct eEmpleados *aArray, int cantidad);

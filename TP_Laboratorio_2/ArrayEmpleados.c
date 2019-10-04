@@ -177,3 +177,54 @@ int modificarEmpleados(struct eEmpleados *aArray, int cantidad,int ID)
     }
     return retorno;
 }
+
+int imprimirEmpleados(struct eEmpleados *aArray, int cantidad){
+	int i;
+	int retorno = -1;
+	if(aArray != NULL && cantidad>0)
+	{
+		retorno = 0;
+		printf("Recuerde los sectores son:\n1.Gerencia -- 2.Empleado\n\n"
+                "id     Nombre    Apellido    Sueldo     Tipo\n");
+		for(i=0;i<cantidad;i++)
+		{
+			if(aArray[i].status == STATUS_NOT_EMPTY){
+				printf("%d -- %s -- %s -- %2.f -- %d \n",aArray[i].id,aArray[i].nombre,aArray[i].apellido,aArray[i].sueldo,aArray[i].sector);
+			}
+
+		}
+	}
+	return retorno;
+}
+
+int bajaEmpleadoID(struct eEmpleados *aArray, int cantidad,int id){
+	int retorno = -1;
+	int index;
+	if(aArray!=NULL && cantidad > 0)
+    {
+		index = buscarEmpleadosID(aArray, cantidad, id);
+		if(index != -1)
+        {
+			aArray[index].status = STATUS_EMPTY;
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
+
+int bajaEmpleado(struct eEmpleados *aArray, int cantidad, int ID)
+{
+    char conf;
+    getChar(&conf,"¿Esta seguro que desea realizar esta baja?(s/n)\n","No es una respuesta valida(s/n)\n",'a','z',2);
+    if(conf == 's')
+    {
+        if(bajaEmpleadoID(aArray,CANT_EMPLEADOS,ID) == 0)
+        {
+            printf("Baja Exitosa\n");
+        }
+        else
+        {
+            printf("Error al dar la baja, verifique si el ID existe");
+        }
+    }
+}

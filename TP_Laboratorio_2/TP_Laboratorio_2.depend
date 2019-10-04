@@ -47,3 +47,27 @@
 	"ArrayEmpleados.h"
 	"utn.h"
 
+1570202661 source:d:\usuario\desktop\estudio\abm_completo\tp_laboratorio_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmpleados.h"
+	"utn.h"
+
+1570199546 d:\usuario\desktop\estudio\abm_completo\tp_laboratorio_2\arrayempleados.h
+
+1570198545 d:\usuario\desktop\estudio\abm_completo\tp_laboratorio_2\utn.h
+
+1570198545 source:d:\usuario\desktop\estudio\abm_completo\tp_laboratorio_2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1570202165 source:d:\usuario\desktop\estudio\abm_completo\tp_laboratorio_2\arrayempleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmpleados.h"
+	"utn.h"
+
